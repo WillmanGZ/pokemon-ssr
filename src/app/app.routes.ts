@@ -13,4 +13,8 @@ export const routes: Routes = [
     path: 'contact',
     loadComponent: () => import('./pages/contact/contact-page.component'),
   },
+  {
+    path: '**',
+    redirectTo: 'about',
+  },
 ];
