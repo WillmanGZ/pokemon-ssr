@@ -1,9 +1,8 @@
 import { Routes } from '@angular/router';
-import { RenderMode } from '@angular/ssr';
 
 export const routes: Routes = [
   {
-    path: 'pokemons',
+    path: 'pokemons/page/:page',
     loadComponent: () => import('./pages/pokemons/pokemons-page.component'),
   },
   {
