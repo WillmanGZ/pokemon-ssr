@@ -8,13 +8,12 @@ export const serverRoutes: ServerRoute[] = [
     path: 'pokemons/page/:page',
     renderMode: RenderMode.Prerender,
     async getPrerenderParams() {
-      return [
-        { page: '1' },
-        { page: '2' },
-        { page: '3' },
-        { page: '4' },
-        { page: '5' },
-      ];
+      //Get first 10 pages
+      const pages: { page: string }[] = [];
+      for (let index = 0; index < 10; index++) {
+        pages.push({ page: `${index}` });
+      }
+      return pages;
     },
   },
   {
