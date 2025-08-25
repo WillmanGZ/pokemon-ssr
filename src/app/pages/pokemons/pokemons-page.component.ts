@@ -8,6 +8,7 @@ import {
   signal,
 } from '@angular/core';
 import { PokemonListComponent } from '../../pokemons/components/pokemon-list/pokemon-list.component';
+import { PokemonsService } from '../../pokemons/services/pokemons.service';
 
 @Component({
   selector: 'pokemons-page',
@@ -15,20 +16,24 @@ import { PokemonListComponent } from '../../pokemons/components/pokemon-list/pok
   templateUrl: './pokemons-page.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export default class PokemonsPageComponent implements OnInit, OnDestroy {
-  public isLoading = signal(true);
+export default class PokemonsPageComponent implements OnInit {
+  private pokemonsService = inject(PokemonsService);
+
+  /*  public isLoading = signal(true);
   private appRef = inject(ApplicationRef);
   private $appState = this.appRef.isStable.subscribe((isStable) => {
     console.log(isStable);
   });
+ */
 
   ngOnInit(): void {
-    setTimeout(() => {
+    /* setTimeout(() => {
       this.isLoading.set(false);
-    }, 1500);
+    }, 1500); */
+    this.loadPokemons();
   }
-  
-  ngOnDestroy(): void {
-    this.$appState.unsubscribe();
+
+  public loadPokemons(page = 0) {
+    this.pokemonsService.loadPage(page).subscribe((pokemons) => {});
   }
 }
