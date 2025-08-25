@@ -14,10 +14,11 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { map, tap } from 'rxjs';
 import { Title } from '@angular/platform-browser';
+import { PokemonListSkeletonComponent } from './ui/pokemon-list-skeleton/pokemon-list-skeleton.component';
 
 @Component({
   selector: 'pokemons-page',
-  imports: [PokemonListComponent],
+  imports: [PokemonListComponent, PokemonListSkeletonComponent],
   templateUrl: './pokemons-page.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

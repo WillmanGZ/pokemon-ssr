@@ -4,6 +4,8 @@
 
 @if(pokemons()){
 <pokemon-list [pokemons]="pokemons()" />
+} @else {
+<pokemon-list-skeleton />
 }
 
 <div class="flex justify-between">
